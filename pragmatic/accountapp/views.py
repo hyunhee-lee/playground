@@ -12,36 +12,36 @@ from django.views.generic.list import MultipleObjectMixin
 
 from accountapp.decorators import account_ownership_required
 from accountapp.forms import AccountUpdateForm
-from accountapp.models import HelloWorld
+# from accountapp.models import HelloWorld
 from django.urls import reverse, reverse_lazy
 
 from articleapp.models import Article
 
 has_ownership = [account_ownership_required, login_required]
 
-@login_required
-def hello_world(request):
-
-    # if request.user.is_authenticated:
-    if request.method == "POST":
-
-        temp = request.POST.get('hello_world_input')
-
-        new_hello_world = HelloWorld()
-        new_hello_world.text = temp
-        new_hello_world.save()
-
-        # db 목록 조회
-        hello_world_list = HelloWorld.objects.all()
-
-        return HttpResponseRedirect(reverse('accountapp:hello_world'))
-        # return render(request, 'accountapp/hello_world.html', context={'hello_world_list': hello_world_list})
-        # return HttpResponse('안녕하세요 바뀐게 자동으로. 오 다시 바뀌네 다시.자동저장ON')
-    else:
-        hello_world_list = HelloWorld.objects.all()
-        return render(request, 'accountapp/hello_world.html', context={'hello_world_list': hello_world_list})
-    # else:
-    #     return HttpResponseRedirect(reverse('accountapp:login'))
+# @login_required
+# def hello_world(request):
+#
+#     # if request.user.is_authenticated:
+#     if request.method == "POST":
+#
+#         temp = request.POST.get('hello_world_input')
+#
+#         new_hello_world = HelloWorld()
+#         new_hello_world.text = temp
+#         new_hello_world.save()
+#
+#         # db 목록 조회
+#         hello_world_list = HelloWorld.objects.all()
+#
+#         return HttpResponseRedirect(reverse('accountapp:hello_world'))
+#         # return render(request, 'accountapp/hello_world.html', context={'hello_world_list': hello_world_list})
+#         # return HttpResponse('안녕하세요 바뀐게 자동으로. 오 다시 바뀌네 다시.자동저장ON')
+#     else:
+#         hello_world_list = HelloWorld.objects.all()
+#         return render(request, 'accountapp/hello_world.html', context={'hello_world_list': hello_world_list})
+#     # else:
+#     #     return HttpResponseRedirect(reverse('accountapp:login'))
 
 class AccountCreateView(CreateView):
     model = User
