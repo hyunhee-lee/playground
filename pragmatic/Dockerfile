@@ -4,7 +4,7 @@ WORKDIR /home/
 
 RUN git clone https://github.com/hyunhee-lee/playground.git
 
-WORKDIR /home/pragmatic/pragmatic/
+WORKDIR /home/playground/pragmatic/
 
 RUN pip install -r requirements.txt
 
