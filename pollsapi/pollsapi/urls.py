@@ -16,7 +16,27 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include, re_path
 
+from django.urls import include, path
+from rest_framework import routers
+from quickstart import views
+# from polls import polls_views
+
+router = routers.DefaultRouter()
+router.register(r'users', views.UserViewSet)
+router.register(r'groups', views.GroupViewSet)
+# router.register(r'rolls', include('polls.urls'))
+
 urlpatterns = [
+    # polls
     path('admin/', admin.site.urls),
     re_path(r'^', include('polls.urls')),
+    # quickstart
+    path('', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
+
+# if  setting.DEBUG:
+#     import debug_toolbar
+#     urlpatterns += [
+#         path(r'^__debug__/', include(debug_toolbar.urls)),
+#     ]
