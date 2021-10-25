@@ -12,6 +12,14 @@ from articleapp.forms import ArticleCreationForm
 from articleapp.models import Article
 from commentapp.forms import CommentCreationForm
 
+from rest_framework import viewsets
+from articleapp.serializers import ArticleSerializer
+
+
+class ArticleViewSet(viewsets.ModelViewSet):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+
 
 @method_decorator(login_required, 'get')
 @method_decorator(login_required, 'post')
@@ -55,7 +63,7 @@ class ArticleDeleteView(DeleteView):
     context_object_name = 'target_article'
     success_url = reverse_lazy('articleapp:list')
     template_name = 'articleapp/delete.html'
-
+#
 class ArticleListView(ListView):
     model = Article
     context_object_name = 'article_list'
