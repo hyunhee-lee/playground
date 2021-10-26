@@ -10,6 +10,13 @@ from commentapp.decorators import comment_ownership_required
 from commentapp.forms import CommentCreationForm
 from commentapp.models import Comment
 
+from rest_framework import viewsets
+from commentapp.serializers import CommentSerializer
+
+
+class CommentViewSet(viewsets.ModelViewSet):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
 
 class CommentCreateView(CreateView):
     model = Comment

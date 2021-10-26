@@ -10,6 +10,14 @@ from profileapp.forms import ProfileCreationForm
 from profileapp.models import Profile
 
 
+from rest_framework import viewsets
+from profileapp.serializers import ProfileSerializer
+
+
+class ProfileViewSet(viewsets.ModelViewSet):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
+
 class ProfileCreateView(CreateView):
     model = Profile
     context_object_name = 'target_profile'
