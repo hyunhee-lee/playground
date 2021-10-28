@@ -10,7 +10,7 @@ from commentapp import views
 from rest_framework import routers
 
 router = routers.DefaultRouter()
-router.register(r'list', views.CommentViewSet)
+router.register(r'lists', views.CommentViewSet)
 
 
 app_name = 'commentapp'

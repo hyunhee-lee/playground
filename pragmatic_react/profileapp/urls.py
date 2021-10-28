@@ -10,7 +10,7 @@ from profileapp import views
 from rest_framework import routers
 
 router = routers.DefaultRouter()
-router.register(r'list', views.ProfileViewSet)
+router.register(r'lists', views.ProfileViewSet)
 
 
 app_name = 'profileapp'
