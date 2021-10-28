@@ -17,7 +17,16 @@ from django.urls import reverse, reverse_lazy
 
 from articleapp.models import Article
 
+from rest_framework import viewsets
+from accountapp.serializers import UserSerializer
+
+
 has_ownership = [account_ownership_required, login_required]
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
 # @login_required
 # def hello_world(request):
